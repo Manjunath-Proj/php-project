@@ -1,0 +1,8 @@
+FROM php:7.4-apache
+WORKDIR /var/www/html
+COPY . /var/www/html
+RUN apt-get update && \
+    apt-get install -y libpng-dev && \
+    docker-php-ext-install pdo pdo_mysql gd
+EXPOSE 80
+CMD ["apache2-foreground"]
